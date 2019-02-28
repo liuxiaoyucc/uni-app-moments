@@ -25,7 +25,9 @@
         },
         {
             "path" : "pages/publish/publish",
-            "style" : {}
+            "style" : {
+				"navigationBarTitleText" : "发布"
+			}
         }
     ],
     "globalStyle" : {
