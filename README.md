@@ -12,3 +12,11 @@
 #### 使用方法
 
 1. 直接将uni-app-moments拖到HbuilderX中运行即可
+
+#### 运行截图
+
+![index.jpg](https://upload-images.jianshu.io/upload_images/14618365-379e1915cae8ec46.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) ![comment+like.jpg](https://upload-images.jianshu.io/upload_images/14618365-cdc9299f7697c836.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+![upload.png](https://upload-images.jianshu.io/upload_images/14618365-fef776173d49f68d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) ![showimg.jpg](https://upload-images.jianshu.io/upload_images/14618365-ce9298ae26e24851.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+![showimg02.jpg](https://upload-images.jianshu.io/upload_images/14618365-dd57f7f53446164a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
