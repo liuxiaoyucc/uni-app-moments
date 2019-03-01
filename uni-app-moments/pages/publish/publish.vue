@@ -1,15 +1,9 @@
 <template>
-	<view>
+	<view class="page" @touchstart="touchStart" @touchend="touchEnd">
 		<form>
-			<!-- <view class='feedback-title'>
-				<text>学习心得</text>
-			</view> -->
 			<view class="uni-textarea">
 				<textarea placeholder="这一刻的想法..." v-model="input_content"/>
 			</view>
-			<!-- <view class='feedback-title'>
-			    <text>图片(选填,最多可选9张)</text>
-			</view> -->
 			<view class="uni-list list-pd">
 				<view class="uni-list-cell cell-pd">
 					<view class="uni-uploader">
@@ -35,12 +29,8 @@
 			</view>
 			
 			<view class="footer">
-				
-					<button type="default" class="feedback-submit">提交</button>
-				
+				<button type="default" class="feedback-submit">提交</button>
 			</view>
-			
-				
 		</form>
 	</view>
 </template>
@@ -67,7 +57,13 @@
 				sizeTypeIndex: 2,
 				sizeType: ['压缩', '原图', '压缩或原图'],
 				countIndex: 8,
-				count: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+				count: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+				
+				//侧滑返回start
+				startX: 0, //点击屏幕起始位置
+				movedX: 0, //横向移动的距离
+				endX: 0, //接触屏幕后移开时的位置
+				//end
 			}
 		},
 		onUnload() {
@@ -135,6 +131,16 @@
 					current: current,
 					urls: this.imageList
 				})
+			},
+			touchStart: function(e) {
+				this.startX = e.mp.changedTouches[0].pageX;
+			},
+			
+			touchEnd: function(e) {
+				this.endX = e.mp.changedTouches[0].pageX;
+				if (this.endX - this.startX > 200) {
+					uni.navigateBack();
+				}
 			}
 		}
 	}
@@ -167,5 +173,9 @@
 	}
 	.close-view{
 	    text-align: center;line-height:22upx;height: 24upx;width: 24upx;border-radius: 50%;background: #ef5350;color: #FFFFFF;position: absolute;top: 6upx;right: 8upx;font-size: 24upx;
+	}
+	.page {
+		width: 750upx;
+		height: 100%;
 	}
 </style>

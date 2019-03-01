@@ -54,7 +54,7 @@
 			<chat-input @send-message="send_comment" @blur="blur" :focus="focus" :placeholder="input_placeholder"></chat-input>
 			<!-- <chat-input @send-message="send_comment" @blur="blur" :placeholder="input_placeholder"></chat-input> -->
 		</view>
-
+		<view class="uni-loadmore" v-if="showLoadMore">{{loadMoreText}}</view>
 	</view>
 
 </template>
@@ -83,7 +83,10 @@
 
 				screenHeight: '', //屏幕高度(系统)
 				platform: '',
-				windowHeight: '' //可用窗口高度(不计入软键盘)
+				windowHeight: '' ,//可用窗口高度(不计入软键盘)
+				
+				loadMoreText: "加载中...",
+				showLoadMore: false,
 			}
 		},
 		mounted() {
@@ -104,6 +107,7 @@
 					this.platform = res.platform;
 				}
 			});
+			uni.startPullDownRefresh();
 		},
 		onShow() {
 			uni.onWindowResize((res) => { //监听窗口尺寸变化,窗口尺寸不包括底部导航栏
@@ -127,11 +131,21 @@
 				this.loadMoreText = "加载更多",
 				this.showLoadMore = false;
 		},
-		onReachBottom() {//上拉触底事件
+		onReachBottom() { //监听上拉触底事件
 			console.log('onReachBottom');
+			this.showLoadMore = true;
+			setTimeout(() => {
+				//获取数据
+				this.loadMoreText = "暂无更多";
+			}, 1000);
 		},
-		onPullDownRefresh() {//下拉刷新动作
+		onPullDownRefresh() { //监听下拉刷新动作
 			console.log('onPullDownRefresh');
+			// 这里获取数据
+			setTimeout(function() {
+				//初始化数据
+				uni.stopPullDownRefresh(); //停止下拉刷新
+			}, 1000);
 		},
 		onNavigationBarButtonTap(e) {//监听标题栏点击事件
 			if (e.index == 0) {

@@ -46,9 +46,6 @@
 
 #moments {
 	background: #fff;
-	/* #ifdef H5 */
-	margin-bottom: 100upx;
-	/* #endif */
 }
 
 #moments .home-pic {

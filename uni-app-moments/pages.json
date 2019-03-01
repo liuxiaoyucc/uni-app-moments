@@ -5,7 +5,7 @@
             "path" : "pages/index/index",
             "style" : {
                 "navigationBarTitleText" : "发现",
-            	// "enablePullDownRefresh" : true,
+            	"enablePullDownRefresh" : true,
                 "app-plus" : {
                     "bounce" : "none",
                     "titleNView" : {
