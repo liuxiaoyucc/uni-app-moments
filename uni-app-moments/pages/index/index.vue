@@ -136,7 +136,11 @@
 			this.showLoadMore = true;
 			setTimeout(() => {
 				//获取数据
-				this.loadMoreText = "暂无更多";
+				if (this.posts.length < 20){//测试数据
+					this.posts = this.posts.concat(this.posts);
+				}else{
+					this.loadMoreText = "暂无更多";
+				}
 			}, 1000);
 		},
 		onPullDownRefresh() { //监听下拉刷新动作
