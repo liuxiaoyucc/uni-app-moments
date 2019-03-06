@@ -4,7 +4,7 @@
 #### 历次更新说明
 ##### 1.0.1 20190305
 * 新增下拉刷新和加载更多
-* 修改目录结构,下载解压后直接为项目目录
+* 修改目录结构,dcloud插件市场下载解压后直接为项目目录,可直接运行;github下载后需将根目录下的uni-app-moments目录拖到HbuilderX中才可直接运行
 
 #### 功能简介
 
@@ -19,8 +19,12 @@
 
 #### 使用方法
 
+dcloud插件市场
 1. 解压下载文件
 2. 将项目目录,直接拖到HbuilderX中运行
+github
+1. 下载后需要将根目录下的uni-app-moments目录拖到HbuilderX中才能直接运行
+![dir.jpg](https://upload-images.jianshu.io/upload_images/14618365-1b54255c3ec7b157.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 #### 运行截图
 
