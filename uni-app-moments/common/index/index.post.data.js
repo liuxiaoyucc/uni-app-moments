@@ -40,8 +40,16 @@ export default [{
 							"header_image": "../../static/index/test/header04.jpg",
 							"content": {
 								"text": "租房:东环朝南\n\r2室大衣柜\n\r燃气热水器\n\r5楼采光充足\n\r随时入住",
-								"images": ["../../static/index/test/bgi.jpg", "../../static/index/test/bgi02.jpg",
-									"../../static/index/test/test1.jpg", "../../static/index/test/header01.jpg"
+								"images": [
+									"../../static/index/test/pig-01.jpg", 
+									"../../static/index/test/pig-02.jpg",
+									"../../static/index/test/pig-03.jpg", 
+									"../../static/index/test/pig-04.jpg",
+									"../../static/index/test/pig-05.jpg",
+									"../../static/index/test/pig-06.jpg",
+									"../../static/index/test/pig-07.jpg",
+									"../../static/index/test/pig-08.jpg",
+									"../../static/index/test/pig-09.jpg"
 								]
 							},
 							"islike": 0,
