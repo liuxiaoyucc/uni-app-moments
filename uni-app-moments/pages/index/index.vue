@@ -2,14 +2,12 @@
 	<view id="moments">
 
 		<view class="home-pic">
-
 			<view class="home-pic-base">
 				<view class="top-pic">
 					<image class="header" src="../../static/index/test/header06.jpg" @tap="test"></image>
 				</view>
 				<view class="top-name">Liuxy</view>
 			</view>
-
 		</view>
 
 		<view class="moments__post" v-for="(post,index) in posts" :key="index" :id="'post-'+index">

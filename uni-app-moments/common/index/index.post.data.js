@@ -22,7 +22,7 @@ export default [{
 								"comment": [{
 										"uid": 2,
 										"username": '小爱',
-										"content": "加个微信吧!"
+										"content": "加个微信吧!基金基金基金基金基金基金基金基金基金基金基金基金基金基金基金基金基金基金"
 									},
 									{
 										"uid": 3,

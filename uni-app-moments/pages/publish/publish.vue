@@ -29,7 +29,7 @@
 			</view>
 			
 			<view class="footer">
-				<button type="default" class="feedback-submit">提交</button>
+				<button type="default" class="feedback-submit" @click="publish">提交</button>
 			</view>
 		</form>
 	</view>
@@ -74,14 +74,67 @@
 				this.sizeType = ['压缩', '原图', '压缩或原图'],
 				this.countIndex = 8;
 		},
-		onNavigationBarButtonTap(e) {//监听右上自定义按钮点击事件
-			 if(e.index == 0) {
-				uni.switchTab({
-					url: '../find'
-				});
-			 }
-		},
+		
 		methods: {
+			async publish(){
+				if (!this.input_content) {
+					uni.showModal({ content: '内容不能为空', showCancel: false, });
+				}
+				uni.showLoading({title:'发布中'});
+				var location = await this.getLocation();//位置信息,可删除
+				var images = [];
+				
+				for(var i = 0,len = this.imageList.length; i < len; i++){
+					var image_obj = {name:'image-'+i,uri:this.imageList[i]};
+					images.push(image_obj);
+				}
+				
+				uni.uploadFile({//该上传仅为示例,可根据自己业务修改或封装,注意:统一上传可能会导致服务器压力过大
+					url: 'moment/moments', //仅为示例，非真实的接口地址
+					files:images,//有files时,会忽略filePath和name
+					filePath: '',
+					name: '',
+					formData: {//后台以post方式接收
+						'user_id':'1',//自己系统中的用户id
+						'text': this.input_content,//moment文字部分
+						'longitude':location.longitude,//经度
+						'latitude':location.latitude//纬度
+					},
+					success: (uploadFileRes) => {
+						uni.hideLoading();
+						uni.showToast({
+							icon:'success',
+							title:"发布成功"
+						})
+
+						uni.navigateBack({//可根据实际情况使用其他路由方式
+							delta:1
+						});
+					},
+					fail: (e) => {
+						console.log("e: " + JSON.stringify(e));
+						uni.hideLoading();
+						uni.showToast({
+							icon:'none',
+							title:"发布失败,请检查网络"
+						})
+					}
+				});
+			},
+			
+			getLocation(){//h5中可能不支持,自己选择
+				return new Promise((resolve, reject) => {
+					uni.getLocation({
+						type: 'wgs84',
+						success: function (res) {
+							resolve(res);
+						},
+						fail: (e) => {  
+							reject(e);
+						}
+					});
+				} )
+			},
 			
 			close(e){
 			    this.imageList.splice(e,1);

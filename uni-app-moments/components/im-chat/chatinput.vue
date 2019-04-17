@@ -6,9 +6,8 @@
 		<view class="footer-center">
 			<input class="input-text" type="text" @confirm="sendMessge" v-model="inputValue" :focus="focus" @blur="blur" :placeholder="placeholder"></input>
 		</view>
-		<view class="footer-right" @tap="sendMessge">
-			<view id='msg-type' class="send-comment">发送</view>
-			<!-- <button class="send-comment">发送</button> -->
+		<view class="footer-right">
+			<view id='msg-type' class="send-comment" @tap="sendMessge">发送</view>
 		</view>
 	</view>
 </template>
@@ -49,6 +48,13 @@
 				});
 			},
 			sendMessge: function () {
+				if (!this.inputValue) {
+					uni.showModal({
+						content:"还没有输入内容哦!",
+						showCancel:false
+					})
+					return;
+				}
 				var that = this;
 				//点击发送按钮时，通知父组件用户输入的内容
 				this.$emit('send-message', {
