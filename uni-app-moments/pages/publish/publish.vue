@@ -36,6 +36,8 @@
 </template>
 
 <script>
+	import image from '@/common/image.js';
+	
 	var sourceType = [
 		['camera'],
 		['album'],
@@ -52,6 +54,9 @@
 				// title: 'choose/previewImage',
 				input_content:'',
 				imageList: [],
+				
+				
+				
 				sourceTypeIndex: 2,
 				sourceType: ['拍照', '相册', '拍照或相册'],
 				sizeTypeIndex: 2,
@@ -79,11 +84,13 @@
 			async publish(){
 				if (!this.input_content) {
 					uni.showModal({ content: '内容不能为空', showCancel: false, });
+					return;
 				}
-				uni.showLoading({title:'发布中'});
-				var location = await this.getLocation();//位置信息,可删除
-				var images = [];
 				
+				uni.showLoading({title:'发布中'});
+				
+				var location = await this.getLocation();//位置信息,可删除,主要想记录一下异步转同步处理
+				var images = [];
 				for(var i = 0,len = this.imageList.length; i < len; i++){
 					var image_obj = {name:'image-'+i,uri:this.imageList[i]};
 					images.push(image_obj);
@@ -106,7 +113,6 @@
 							icon:'success',
 							title:"发布成功"
 						})
-
 						uni.navigateBack({//可根据实际情况使用其他路由方式
 							delta:1
 						});
@@ -152,7 +158,14 @@
 					sizeType: sizeType[this.sizeTypeIndex],
 					count: this.imageList.length + this.count[this.countIndex] > 9 ? 9 - this.imageList.length : this.count[this.countIndex],
 					success: (res) => {
-						this.imageList = this.imageList.concat(res.tempFilePaths);
+						// this.imageList = this.imageList.concat(res.tempFilePaths)//如果不想压缩就使用这个,把下面压缩部分删除
+
+						//提交压缩
+						var compressd = cp_images=> {
+							this.imageList = this.imageList.concat(cp_images)//压缩后的图片路径
+							
+						}
+						image.compress(res.tempFilePaths,compressd);
 					}
 				})
 			},
@@ -176,10 +189,6 @@
 			},
 			previewImage: function(e) {
 				var current = e.target.dataset.src
-				// 					var current = 'https://i.loli.net/2019/02/18/5c6a6e2623448.jpg'
-				// 					this.imageList = ['https://i.loli.net/2019/02/18/5c6a6e2623448.jpg','https://i.loli.net/2019/02/18/5c6a6e49829ea.jpg']
-				console.log(current);
-				console.log(this.imageList);
 				uni.previewImage({
 					current: current,
 					urls: this.imageList
