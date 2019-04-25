@@ -2,8 +2,8 @@
 	<view class="page" @touchstart="touchStart" @touchend="touchEnd">
 		<form>
 			<view class="uni-textarea">
-				<textarea placeholder="这一刻的想法..." v-model="input_content"/>
-			</view>
+				<textarea placeholder="这一刻的想法..." v-model="input_content" />
+				</view>
 			<view class="uni-list list-pd">
 				<view class="uni-list-cell cell-pd">
 					<view class="uni-uploader">
@@ -16,7 +16,7 @@
 								<block v-for="(image,index) in imageList" :key="index">
 									<view class="uni-uploader__file" style="position: relative;">
 										<image class="uni-uploader__img" mode="aspectFill" :src="image" :data-src="image" @tap="previewImage"></image>
-										<view class="close-view" @click="close(index)">x</view>
+										<view class="close-view" @click="close(index)">×</view>
 									</view>
 								</block>
 								<view class="uni-uploader__input-box" v-show="imageList.length < 9">
@@ -234,7 +234,17 @@
 		margin-top: 0;
 	}
 	.close-view{
-	    text-align: center;line-height:22upx;height: 24upx;width: 24upx;border-radius: 50%;background: #ef5350;color: #FFFFFF;position: absolute;top: 6upx;right: 8upx;font-size: 24upx;
+	    text-align: center;
+		line-height:30upx;
+		height: 35upx;
+		width: 35upx;
+		background: #ef5350;
+		color: #FFFFFF;
+		position: absolute;
+		top: 1upx;
+		right: 1upx;
+		font-size: 35upx;
+		border-radius: 8upx;
 	}
 	.page {
 		width: 750upx;
