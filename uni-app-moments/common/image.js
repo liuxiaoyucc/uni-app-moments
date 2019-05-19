@@ -40,7 +40,7 @@ async function _compress(_image) {
 				src: _image,//原始图片的路径
 				dst: _image,//压缩转换目标图片的路径(为了省事这里使用原路径)
 				overwrite: true,//使用原文件名并覆盖,如果想将原文件保留,并和压缩后图片同时上传,需要改为false,并修改dst
-				quality: 1,//1-100,压缩后质量,越低图片占用空间越小,越模糊,用1看效果
+				quality: 100,//1-100,压缩后质量,越低图片占用空间越小,越模糊
 				width: max_width+'px',//这里先写死800;height默认为auto,即根据width与源图宽的缩放比例计算
 			},
 			(res) => {

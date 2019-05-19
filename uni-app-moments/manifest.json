@@ -6,6 +6,7 @@
     "versionCode" : 120,
     "transformPx" : false,
     "app-plus" : {
+		"usingComponents": true, //是否启用`自定义组件模式`，为true表示新的`自定义组件模式` ，否则为`template模板模式`
         /* 5+App特有相关 */
         "splashscreen" : {
             "alwaysShowBeforeRender" : true,

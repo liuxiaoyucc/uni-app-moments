@@ -158,14 +158,19 @@
 					sizeType: sizeType[this.sizeTypeIndex],
 					count: this.imageList.length + this.count[this.countIndex] > 9 ? 9 - this.imageList.length : this.count[this.countIndex],
 					success: (res) => {
-						// this.imageList = this.imageList.concat(res.tempFilePaths)//如果不想压缩就使用这个,把下面压缩部分删除
 
-						//提交压缩
+						// #ifdef APP-PLUS
+						//提交压缩,因为使用了H5+ Api,所以自定义压缩目前仅支持APP平台
 						var compressd = cp_images=> {
 							this.imageList = this.imageList.concat(cp_images)//压缩后的图片路径
-							
 						}
 						image.compress(res.tempFilePaths,compressd);
+						// #endif
+						
+						// #ifndef APP-PLUS
+						this.imageList = this.imageList.concat(res.tempFilePaths)//非APP平台不支持自定义压缩,暂时没有处理,可通过uni-app上传组件的sizeType属性压缩
+						// #endif
+						
 					}
 				})
 			},
