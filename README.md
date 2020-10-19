@@ -1,5 +1,6 @@
 # uni-app-moments
-基于uni-app的仿微信朋友圈模版
+uni-app朋友圈模版
+uniapp初期写的模版, 时间比较久远, 目前不再维护
 
 #### 历次更新说明
 
